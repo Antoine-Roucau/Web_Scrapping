@@ -1,7 +1,5 @@
 # Web Scraping Tools
 
-A collection of Python web scraping utilities for different purposes.
-
 ## Projects
 
 ### CTF Write-ups Crawler
