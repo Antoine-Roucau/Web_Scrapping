@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 options.add_argument('--no-sandbox')
@@ -23,28 +22,25 @@ soup = BeautifulSoup(page_source, features="lxml")
 
 results = soup.find(id="tiny-tabs-content-1")
 
-titres = results.find_all('strong')
-print(titres)
+titles = results.find_all('strong')
+print(titles)
 messages = results.find_all('span')
 
-inventaire = ""
+inventory = ""
 
-
-
-for msg in titres:
+for msg in titles:
     temp = msg.text.strip()
     temp = temp.strip(',') + ","
     if (temp != ","):
-        inventaire += temp
+        inventory += temp
 
+inventory = inventory.replace(",", "\n")
 
-inventaire = inventaire.replace(",","\n")
+file_to_write = open("page_source.txt", "w", encoding="utf-8")
+file_to_write.write(inventory)
+file_to_write.close()
 
-fileToWrite = open("page_source.txt", "w",encoding="utf-8")
-fileToWrite.write(inventaire)
-fileToWrite.close()
-
-Vehicles = []
-Characters = []
-Ranged_weapons = []
-Melee_weapons = []
+vehicles = []
+characters = []
+ranged_weapons = []
+melee_weapons = []
